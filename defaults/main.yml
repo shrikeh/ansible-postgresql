@@ -1,4 +1,10 @@
 ---
-postgresql_pkg_el: postgresql94-server
-postgresql_pkg_state_latest: yes
+postgresql_server_service_handler: 'restart PostgreSQL server'
+postgresql_server_pkg_state_latest: yes
+
+postgresql_server_service_name_el: 'postgresql-9.4'
+postgresql_server_pkg_el_pgdg: http://yum.postgresql.org/9.4/redhat/rhel-6-x86_64/postgresql94-server-9.4.5-1PGDG.rhel6.x86_64.rpm
+postgresql_server_pkg_el: postgresql94-server
+
+
 ...

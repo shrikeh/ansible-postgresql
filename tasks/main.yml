@@ -1,7 +1,16 @@
 ---
-
-- name: Install PostgreSQL on EL distros
-  yum:
-    name: "{{ postgresql_pkg_el }}"
-    state: "{{ 'latest' when postgresql_pkg_state_latest else 'present' }}"
+- name: Installation steps for EL systems
+  include: el-install.yml
   when: ansible_pkg_mgr == 'yum'
+
+- name: Install PostgreSQL on Ubuntu distros
+  apt:
+    name: "{{ postgresql_server_pkg_apt }}"
+    state: "{{ 'latest' if postgresql_server_pkg_state_latest else 'present' }}"
+  when: ansible_pkg_mgr == 'apt'
+
+- name: Install PostgreSQL on Ubuntu distros
+  apt:
+    name: "{{ postgresql_pkg_apt }}"
+    state: "{{ 'latest' if postgresql_server_kg_state_latest else 'present' }}"
+  when: ansible_pkg_mgr == 'apt'

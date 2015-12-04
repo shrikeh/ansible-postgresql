@@ -1,0 +1,6 @@
+---
+- name: "{{ postgresql_server_service_handler }}"
+  service:
+    name: "{{ postgresql_server_service_name | mandatory }}"
+    state: restarted
+...

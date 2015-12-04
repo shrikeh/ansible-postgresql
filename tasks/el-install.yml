@@ -1,0 +1,16 @@
+---
+- name: Set facts for EL systems
+  set_fact:
+    postgresql_server_service_name: "{{ postgresql_server_service_name_el }}"
+
+- name: Grab the PGDG file from the URI
+  yum:
+    name: "{{ postgresql_server_pkg_el_pgdg }}"
+    state: latest
+- name: Now install PostgreSQL proper
+  yum:
+    name: "{{ postgresql_pkg_el }}"
+    state: "{{ 'latest' if postgresql_server_pkg_state_latest else 'present' }}"
+  notify:
+    - "{{ postgresql_server_service_handler }}"
+...
