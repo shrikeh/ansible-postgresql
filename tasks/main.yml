@@ -1,0 +1,7 @@
+---
+
+- name: Install PostgreSQL on EL distros
+  yum:
+    name: "{{ postgresql_pkg_el }}"
+    state: "{{ 'latest' when postgresql_pkg_state_latest else 'present' }}"
+  when: ansible_pkg_mgr == 'yum'

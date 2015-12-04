@@ -1,0 +1,4 @@
+---
+postgresql_pkg_el: postgresql94-server
+postgresql_pkg_state_latest: yes
+...
